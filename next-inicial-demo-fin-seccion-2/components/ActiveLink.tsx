@@ -17,7 +17,7 @@ export const ActiveLink: FC<ActiveLinkProps> = ({ text, href }) => {
 
   return (
     <Link href={href}>
-      <a style={asPath === href ? style : null}>{text}</a>
+      <a style={asPath === href ? style : undefined}>{text}</a>
     </Link>
   );
 };
