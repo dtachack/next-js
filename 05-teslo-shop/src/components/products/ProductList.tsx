@@ -18,8 +18,8 @@ interface Props {
 const ProductList: FC<Props> = ({ products }) => {
   return (
     <Grid container spacing={4}>
-      {products?.map((product) => (
-        <ProductCard key={product._id} product={product}></ProductCard>
+      {products?.map((product, i) => (
+        <ProductCard key={i} product={product}></ProductCard>
       ))}
     </Grid>
   );

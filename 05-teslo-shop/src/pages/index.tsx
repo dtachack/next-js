@@ -8,10 +8,13 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { initialData } from "database/products";
 import ProductList from "@/components/products/ProductList";
+import { useProducts } from "@/hooks";
+import FullScreenLoading from "@/components/ui/FullScreenLoading";
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
+  const { products, isLoading } = useProducts("/products");
+
   return (
     <ShopLayout
       title="Teslo-Shop - Home"
@@ -24,12 +27,13 @@ const Home: NextPage = () => {
       <Typography variant="h2" sx={{ mb: 1 }}>
         Todos los productos
       </Typography>
-
-      <ProductList products={initialData.products as any}>
-
-      </ProductList>
+      {isLoading ? (
+        <FullScreenLoading></FullScreenLoading>
+      ) : (
+        <ProductList products={products}></ProductList>
+      )}
     </ShopLayout>
   );
 };
 
-export default Home;
+export default HomePage;
